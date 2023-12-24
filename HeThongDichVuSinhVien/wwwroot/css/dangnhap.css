@@ -1,0 +1,49 @@
+﻿
+/* style.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center; /* Đặt text-align để căn giữa nội dung trong form */
+}
+
+.logo-container {
+    margin-bottom: 20px;
+}
+
+    .logo-container img {
+        width: 200px; /* Điều chỉnh chiều rộng của logo */
+        height: auto; /* Giữ tỷ lệ khích thước tự động */
+    }
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+    input[type="submit"] {
+        background-color: #2e4ead;
+        color: #fff;
+        cursor: pointer;
+    }
+
+        input[type="submit"]:hover {
+            background-color: #1c3763;
+        }

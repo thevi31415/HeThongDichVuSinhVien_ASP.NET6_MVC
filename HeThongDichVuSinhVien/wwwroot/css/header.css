@@ -1,0 +1,183 @@
+﻿
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,600,700&display=swap');
+
+.logo img {
+    width: 90px; /* Thay đổi kích thước theo nhu cầu của bạn */
+    height: 90px;
+    object-fit: contain;
+}
+
+.wrapper .top_navbar {
+    width: calc(100%);
+    height: 100px;
+    display: flex;
+    position: fixed;
+    top: 0px;
+}
+
+    .wrapper .top_navbar .top_menu {
+        width: calc(100%);
+        height: 100%;
+        background: #fff;
+        border-top-right-radius: 0px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+        box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+    }
+
+        .wrapper .top_navbar .top_menu .logo {
+            color: #2e4ead;
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: 3px;
+        }
+
+        .wrapper .top_navbar .top_menu ul {
+            display: flex;
+        }
+
+            .wrapper .top_navbar .top_menu ul li a {
+                display: block;
+                margin: 0 10px;
+                width: 35px;
+                height: 35px;
+                line-height: 35px;
+                text-align: center;
+                border: 1px solid #2e4ead;
+                border-radius: 50%;
+                color: #2e4ead;
+            }
+
+                .wrapper .top_navbar .top_menu ul li a:hover {
+                    background: #4360b5;
+                    color: #fff;
+                }
+
+                    .wrapper .top_navbar .top_menu ul li a:hover i {
+                        color: #fff;
+                    }
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,600,700&display=swap');
+
+.content {
+    margin-top: 120px; /* Khoảng cách phía trên */
+    margin-right: 20px; /* Khoảng cách phía phải */
+    margin-bottom: 100px; /* Khoảng cách phía dưới */
+    margin-left: 330px;
+    z-index: 1; /* Đặt giá trị z-index để đảm bảo nội dung nằm trên menu */
+    position: relative;
+    /* Khoảng cách phía trái */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Đảm bảo menu và footer có các giá trị z-index phù hợp */
+.menu {
+    z-index: 1;
+}
+
+.footer {
+    z-index: 0;
+}
+
+body {
+    background: #e1ecf2;
+}
+
+.wrapper .sidebar {
+    position: fixed;
+    top: 100px;
+    background: #2e4ead;
+    width: 300px;
+    height: calc(100% - 80px);
+    border-bottom-left-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+    .wrapper .sidebar ul li a {
+        display: block;
+        padding: 20px;
+        color: #fff;
+        position: relative;
+        margin-bottom: 1px;
+        color: #92a6e2;
+        white-space: nowrap;
+    }
+
+        .wrapper .sidebar ul li a:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background: #92a6e2;
+            display: none;
+        }
+
+        .wrapper .sidebar ul li a span.icon {
+            margin-right: 10px;
+            display: inline-block;
+        }
+
+        .wrapper .sidebar ul li a span.title {
+            display: inline-block;
+        }
+
+        .wrapper .sidebar ul li a:hover,
+        .wrapper .sidebar ul li a.active {
+            background: #4360b5;
+            color: #fff;
+        }
+
+            .wrapper .sidebar ul li a:hover:before,
+            .wrapper .sidebar ul li a.active:before {
+                display: block;
+            }
+
+.wrapper .main_container {
+    width: (100% - 200px);
+    margin-top: 70px;
+    margin-left: 200px;
+    padding: 15px;
+    transition: all 0.3s ease;
+}
+
+    .wrapper .main_container .item {
+        background: #fff;
+        margin-bottom: 10px;
+        padding: 15px;
+        font-size: 14px;
+        line-height: 22px;
+    }
+
+.wrapper {
+    margin: 0px;
+}
+
+.top_navbar, .sidebar {
+    width: 300px;
+}
+
+/* Add styles for the footer here */
+.footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #2e4ead;
+    color: #fff;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    margin-left: 100px; /* Adjust the margin based on your menu's height */
+}
+
