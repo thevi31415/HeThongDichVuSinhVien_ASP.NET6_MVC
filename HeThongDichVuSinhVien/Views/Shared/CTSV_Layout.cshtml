@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <head>
+        <link rel="stylesheet" type="text/css" href="~/css/header.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    </head>
+    <style>
+        .top_navbar {
+            z-index: 1000; /* Số này phải lớn hơn các z-index của các thành phần khác để top_navbar nằm trên cùng */
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="top_navbar">
+            <div class="top_menu">
+                <div class="logo">
+                    <img src="~/img/logo.jpg" alt="Logo" />
+                </div>
+                <ul>
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-search"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-bell"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-user"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <aside>
+
+        <div class="wrapper">
+            <div class="sidebar">
+                <ul>
+                    <style>
+                        .Info {
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            color: white;
+                        }
+                    </style>
+                    <li>
+                        <a href="">
+                            <span class="Info" style="color: white;">
+                                <strong>Nguyen Van B</strong><br>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<%=request.getContextPath()%>/views/SV/index.jsp">
+                            <span class="icon"><i class="fas fa-book"></i></span>
+                            <span class="title">Thông báo</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<%=request.getContextPath()%>/views/SV/thongtin.jsp">
+                            <span class="icon"><i class="fas fa-book"></i></span>
+                            <span class="title">Thông tin cá nhân</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<%=request.getContextPath()%>/views/SV/dangkygiayxacnhan.jsp">
+                            <span class="icon"><i class="fas fa-file-video"></i></span>
+                            <span class="title">Đăng ký giấy xác nhận</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<%=request.getContextPath()%>/views/SV/yeucau.jsp">
+                            <span class="icon"><i class="fas fa-blog"></i></span>
+                            <span class="title">Yêu cầu dịch vụ khác</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="dangxuat">
+                            <span class="icon"><i class="fas fa-leaf"></i></span>
+                            <span class="title">Đăng xuất</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </aside>
+    <div>
+        @RenderBody()
+    </div>
+    <div class="footer">
+        <p>&copy; 2023 Nhóm 14 - Hệ thống dịch vụ sinh viên . All rights reserved.</p>
+
+    </div>
+</body>
+</html>
