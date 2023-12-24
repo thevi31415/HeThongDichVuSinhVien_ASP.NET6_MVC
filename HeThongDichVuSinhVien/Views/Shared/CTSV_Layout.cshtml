@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor Accessor
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -57,18 +59,18 @@
                     <li>
                         <a href="">
                             <span class="Info" style="color: white;">
-                                <strong>Nguyen Van B</strong><br>
+                                <strong> <strong>CTSV. @Accessor.HttpContext.Session.GetString("TenNguoiDung")</strong><br></strong><br>
                         </a>
                     </li>
                     <li>
-                        <a href="<%=request.getContextPath()%>/views/SV/index.jsp">
-                            <span class="icon"><i class="fas fa-book"></i></span>
+                        <a asp-controller="CTSV" asp-action="Index" class="logout-link">
+                            <span class="icon"><i class="fas fa-leaf"></i></span>
                             <span class="title">Thông báo</span>
                         </a>
                     </li>
                     <li>
-                        <a href="<%=request.getContextPath()%>/views/SV/thongtin.jsp">
-                            <span class="icon"><i class="fas fa-book"></i></span>
+                        <a asp-controller="CTSV" asp-action="ThongTin" class="logout-link">
+                            <span class="icon"><i class="fas fa-leaf"></i></span>
                             <span class="title">Thông tin cá nhân</span>
                         </a>
                     </li>

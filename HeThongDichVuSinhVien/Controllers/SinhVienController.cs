@@ -1,9 +1,16 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using HeThongDichVuSinhVien.Data;
+using HeThongDichVuSinhVien.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace HeThongDichVuSinhVien.Controllers
 {
     public class SinhVienController : Controller
     {
+        private readonly ApplicationDbContext _db;
+        public SinhVienController(ApplicationDbContext db)
+        {
+            _db = db;
+        }
         [AuthenticationSinhVien]
         public IActionResult Index()
         {
@@ -11,10 +18,24 @@ namespace HeThongDichVuSinhVien.Controllers
         }
 
         public IActionResult ThongTin()
-        { 
-            
-            return View(); 
+        {
+            string MaNguoiDung = HttpContext.Session.GetString("MaNguoiDung");
+          
+
+
+          NguoiDung nguoidung = _db.nguoiDungs.SingleOrDefault(nd => nd.MaNguoiDung == MaNguoiDung);
+
+            // Kiểm tra xem người dùng có tồn tại hay không
+            if (nguoidung == null)
+            {
+                // Xử lý trường hợp người dùng không tồn tại
+                return NotFound(); // hoặc thực hiện xử lý khác tùy thuộc vào yêu cầu của bạn
+            }
+
+            // Truyền thông tin người dùng đến View
+            return View(nguoidung);
         
+          
 
         }
     }

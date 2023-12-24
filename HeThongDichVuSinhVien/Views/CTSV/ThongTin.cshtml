@@ -1,6 +1,5 @@
 ﻿@{
-    Layout = "~/Views/Shared/SinhVien_Layout.cshtml";
-
+    Layout = "~/Views/Shared/CTSV_Layout.cshtml";
 }
 @model NguoiDung
 <link rel="stylesheet" type="text/css" href="~/css/thongtinsv.css">
@@ -8,7 +7,7 @@
     <div class="container">
         <div class="ThongTinContainer-info">
             <div class="ThongTin-info">
-                <h2>Thông tin Sinh viên</h2>
+                <h2>Thông tin Nhân Viên</h2>
                 <table>
                     <tbody>
                         <tr>
@@ -51,18 +50,7 @@
                             <th>Tình trạng</th>
                             <td>@Model.MaTinhTrang</td>
                         </tr>
-                        <tr>
-                            <th>Lớp sinh viên</th>
-                            <td>@Model.MaLop</td>
-                        </tr>
-                        <tr>
-                            <th>Chuyên ngành</th>
-                            <td><%= nganh.getTenNganh() %></td>
-                        </tr>
-                        <tr>
-                            <th>Khoa</th>
-                            <td><%= khoa.getTenKhoa() %></td>
-                        </tr>
+                       
                     </tbody>
                 </table>
             </div>
@@ -86,7 +74,7 @@
 
                 </div>
             </div>
-      </div>
+        </div>
 
-      </div>
+    </div>
 </div>
