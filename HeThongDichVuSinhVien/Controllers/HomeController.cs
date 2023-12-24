@@ -12,12 +12,12 @@ namespace HeThongDichVuSinhVien.Controllers
         {
             _logger = logger;
         }
-
+        [Authentication]
         public IActionResult Index()
         {
             return View();
         }
-
+        [Authentication]
         public IActionResult Privacy()
         {
             return View();

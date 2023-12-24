@@ -37,6 +37,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=SinhVien}/{action=Index}/{id?}");
+    pattern: "{controller=DangNhap}/{action=Index}/{id?}");
 
 app.Run();

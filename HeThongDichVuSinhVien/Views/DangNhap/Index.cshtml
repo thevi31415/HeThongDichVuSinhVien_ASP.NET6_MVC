@@ -1,16 +1,36 @@
 ﻿
+@model DangNhap
 <head>
     <link rel="stylesheet" type="text/css" href="~/css/dangnhap.css">
 </head>
-
 <body>
-    <form action="" method="post">
+    <form method="post" asp-action="Index">
+        @Html.AntiForgeryToken()
+
+
         <div class="logo-container">
             <img src="~/img/logo.jpg" alt="Logo">
         </div>
-            </div>
-            <input type="text" name="txtName" placeholder="Tên đăng nhập">
-            <input type="password" name="txtPass" placeholder="Mật khẩu">
-            <input type="submit" value="Đăng nhập">
+
+
+        <input asp-for="TenDangNhap" type="text" placeholder="Tên đăng nhập" />
+
+        <input asp-for="MatKhau" type="password" class="form-control" placeholder="Mật khẩu" />
+    
+       
+            <input type="submit" class="btn btn-primary"></input>
+      
     </form>
+
+    @* <form method="post" asp-action="Index">
+        <div class="logo-container">
+            <img src="/DoAnCuoiKyDVSV_Nhom14_FINAL_2/templates/dangnhap/image/logo.jpg" alt="Logo">
+        </div>
+        <p class="text-danger">${mess } <p>
+
+            </div>
+            <input type="text" asp-for="TenDangNhap" name="txtName" placeholder="Tên đăng nhập">
+            <input type="password" asp-for="MatKhau" name="txtPass" placeholder="Mật khẩu">
+            <input type="submit" value="Đăng nhập">
+    </form> *@
 </body>
