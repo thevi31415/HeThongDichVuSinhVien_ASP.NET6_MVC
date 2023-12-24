@@ -4,7 +4,7 @@ namespace HeThongDichVuSinhVien.Controllers
 {
     public class SinhVienController : Controller
     {
-        [Authentication]
+        [AuthenticationSinhVien]
         public IActionResult Index()
         {
             return View();

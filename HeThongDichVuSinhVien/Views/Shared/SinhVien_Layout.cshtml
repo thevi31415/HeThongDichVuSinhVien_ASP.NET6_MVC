@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor Accessor
+
+
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -57,7 +61,7 @@
                     <li>
                         <a href="">
                             <span class="Info" style="color: white;">
-                                <strong>Nguyen Van A</strong><br>
+                                <strong> <strong> @Accessor.HttpContext.Session.GetString("TenDangNhap")</strong><br></strong><br>
                         </a>
                     </li>
                     <li>
@@ -85,7 +89,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="dangxuat">
+                        <a asp-controller="DangNhap" asp-action="Logout" class="logout-link">
                             <span class="icon"><i class="fas fa-leaf"></i></span>
                             <span class="title">Đăng xuất</span>
                         </a>

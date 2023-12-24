@@ -28,6 +28,8 @@ namespace HeThongDichVuSinhVien.Controllers
                 {
 
                     HttpContext.Session.SetString("Role", u.VaiTro.ToString());
+                    HttpContext.Session.SetString("MaNguoiDung", u.MaNguoiDung.ToString());
+                    HttpContext.Session.SetString("TenDangNhap", u.TenDangNhap.ToString());
                     if (u.VaiTro.Equals("SV"))
                     {
                         return RedirectToAction("Index", "SinhVien");
