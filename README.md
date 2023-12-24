@@ -24,7 +24,10 @@ The student service website assists in the management and resolution of student 
    `https://github.com/thevi31415/HeThongDichVuSinhVien_ASP.NET6_MVC.git`
 2. Navigate to the  `appsettings.json` file and ensure the connection string is updated as follows:
 
-    "ConnectionStrings": { "conn": "data source=your_server;initial  catalog=hethongdichvusinhvien;integrated security=true;TrustServerCertificate=True;encrypt=false" }
+   "ConnectionStrings": {
+     "DefaultConnection": "Server=.;Database=hethongdichvusinhvien;Trusted_Connection=True;"
+   }
+
 3. Remove the  `Migrations` folder from the project.
 4. Open Tools > Package Manager > Package manager console
 5. Execute the following two commands:
