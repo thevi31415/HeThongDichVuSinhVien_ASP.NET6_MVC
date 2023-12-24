@@ -9,5 +9,13 @@ namespace HeThongDichVuSinhVien.Controllers
         {
             return View();
         }
+
+        public IActionResult ThongTin()
+        { 
+            
+            return View(); 
+        
+
+        }
     }
 }

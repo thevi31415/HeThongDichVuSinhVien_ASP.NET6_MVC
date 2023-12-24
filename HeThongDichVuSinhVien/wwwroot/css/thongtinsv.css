@@ -1,0 +1,65 @@
+﻿@charset "UTF-8";
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0px;
+}
+
+.ThongTinContainer-info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.ThongTin-info {
+    flex: 0 0 48%;
+    margin-bottom: 40px;
+}
+
+    .ThongTin-info h2 {
+        margin-bottom: 10px;
+        text-align: center;
+        background-color: #2E4EAD;
+        color: white;
+        padding: 10px;
+    }
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.button-container-info {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.button-info {
+    padding: 10px 20px;
+    margin: 0 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    background-color: #3498db;
+}
+
+    .button-info:hover {
+        background-color: #2980b9;
+    }

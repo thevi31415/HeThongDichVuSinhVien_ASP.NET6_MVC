@@ -1,0 +1,91 @@
+﻿@{
+    Layout = "~/Views/Shared/SinhVien_Layout.cshtml";
+
+}
+<link rel="stylesheet" type="text/css" href="~/css/thongtinsv.css">
+<div class='content'>
+    <div class="container">
+        <div class="ThongTinContainer-info">
+            <div class="ThongTin-info">
+                <h2>Thông tin Sinh viên</h2>
+                <table>
+                    <tbody>
+                        <tr>
+                            <th>Mã số sinh viên</th>
+                            <td><%= nguoidung1.getMaNguoiDung() %></td>
+                        </tr>
+                        <tr>
+                            <th>Họ và tên</th>
+                            <td><%= nguoidung1.getHoTen() %></td>
+                        </tr>
+                        <tr>
+                            <th>Ngày sinh</th>
+                            <td><%= nguoidung1.getNgaySinh() %></td>
+                        </tr>
+                        <tr>
+                            <th>Giới tính</th>
+                            <td><%= nguoidung1.getGioiTinh() %></td>
+                        </tr>
+                        <tr>
+                            <th>Dân tộc</th>
+                            <td><%= nguoidung1.getDanToc() %></td>
+                        </tr>
+                        <tr>
+                            <th>Số CMND</th>
+                            <td><%= nguoidung1.getCmnd() %></td>
+                        </tr>
+                        <tr>
+                            <th>Tôn giáo</th>
+                            <td><%= nguoidung1.getTonGiao()%></td>
+                        </tr>
+                        <tr>
+                            <th>Địa chỉ</th>
+                            <td><%= nguoidung1.getDiaChi() %></td>
+                        </tr>
+                        <tr>
+                            <th>Quê quán</th>
+                            <td><%= nguoidung1.getQueQuan() %></td>
+                        </tr>
+                        <tr>
+                            <th>Tình trạng</th>
+                            <td><%= tentinhtrang %></td>
+                        </tr>
+                        <tr>
+                            <th>Lớp sinh viên</th>
+                            <td><%= nguoidung1.getMaLop() %></td>
+                        </tr>
+                        <tr>
+                            <th>Chuyên ngành</th>
+                            <td><%= nganh.getTenNganh() %></td>
+                        </tr>
+                        <tr>
+                            <th>Khoa</th>
+                            <td><%= khoa.getTenKhoa() %></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="ThongTin-info">
+                <h2>Thông tin Liên lạc</h2>
+                <table>
+                    <tbody>
+                        <tr>
+                            <th>Số điện thoại</th>
+                            <td><%= nguoidung1.getSdt()%></td>
+                        </tr>
+                        <tr>
+                            <th>Email</th>
+                            <td><%= nguoidung1.getEmail() %></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="button-container-info">
+                    <a href="<%=request.getContextPath()%>/views/SV/doimatkhau.jsp" class="button-info">Đổi mật khẩu</a>
+
+                </div>
+            </div>
+      </div>
+
+      </div>
+</div>
