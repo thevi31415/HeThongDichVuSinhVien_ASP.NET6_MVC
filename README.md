@@ -2,6 +2,8 @@
 ## Introduction
 The student service website assists in the management and resolution of student requests.
 
+The website has been developed and reworked based on the final project from our web programming course, initially implemented by my team using Java. The project involved the collaboration of three members: Phuc, Hieu, and myself. Recognizing the various shortcomings in the original project, I have chosen to enhance it by rewriting it using ASP.NET Core 6.0. This not only aims to improve the overall completeness of the project but also provides an opportunity for me to acquire valuable insights and knowledge in ASP.NET Core 6.0, which will be beneficial for my future work in this field.
+
 ## Technologies Used
 - ASP.NET 6 MVC: The core framework for building web applications with Model-View-Controller architecture.
 
