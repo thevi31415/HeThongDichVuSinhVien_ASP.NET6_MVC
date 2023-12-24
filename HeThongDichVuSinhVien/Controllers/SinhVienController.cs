@@ -14,7 +14,40 @@ namespace HeThongDichVuSinhVien.Controllers
         [AuthenticationSinhVien]
         public IActionResult Index()
         {
-            return View();
+            // Lọc thông báo theo MaNguoiNhan
+            string maNguoiNhan = HttpContext.Session.GetString("MaNguoiDung");
+            IEnumerable<ThongBao> thongbaoList = _db.thongbaos.Where(tb => tb.MaNguoiNhan == maNguoiNhan).ToList();
+            List<ChiTietThongBao> chitietthongbaolist = new List<ChiTietThongBao>();
+            foreach (var thongBao in thongbaoList)
+            {
+                NguoiDung nguoidung = _db.nguoiDungs.SingleOrDefault(nd => nd.MaNguoiDung == thongBao.MaNguoiGui);
+
+                if (nguoidung != null)
+                {
+                    var chiTietThongBao = new ChiTietThongBao
+                    {
+                        MaThongBao = thongBao.MaTB,
+                        TieuDe = thongBao.TieuDe,
+                        NoiDung = thongBao.NoiDung,
+                        MaNguoiNhan = thongBao.MaNguoiNhan,
+                        MaNguoiGui = thongBao.MaNguoiGui,
+                        TenNguoiGui = nguoidung.HoTen,
+                        TenNguoiNhan = "CTSV",
+                        NgayGui = thongBao.NgayGui
+                        // Thêm các thuộc tính khác của ChiTietThongBao tại đây
+                    };
+
+                    chitietthongbaolist.Add(chiTietThongBao);
+                }
+                else
+                {
+                    // Handle the case where nguoidung is null, e.g., log an error or take appropriate action.
+                }
+            }
+
+
+        
+            return View(chitietthongbaolist);
         }
 
         public IActionResult ThongTin()

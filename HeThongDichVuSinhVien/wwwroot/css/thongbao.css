@@ -1,0 +1,40 @@
+﻿body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.notification-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+    .notification-table th, .notification-table td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+
+.notification-content {
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-top: 10px;
+}
+
+.Inbox_header_dl {
+    background-color: #0087C5;
+    color: White;
+    font-weight: bold;
+}
+
+.notification-title {
+    font-weight: bold;
+    color: #000; /* Màu mặc định của tiêu đề */
+    text-decoration: none; /* Loại bỏ gạch chân mặc định của thẻ a */
+    transition: color 0.3s; /* Hiệu ứng chuyển đổi màu trong 0.3 giây */
+}
+
+    .notification-title:hover {
+        color: green; /* Màu xanh khi di chuột qua */
+    }

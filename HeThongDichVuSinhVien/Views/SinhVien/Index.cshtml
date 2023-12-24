@@ -1,9 +1,49 @@
-﻿@{
+﻿@model List<ChiTietThongBao>
+@{
     Layout = "~/Views/Shared/SinhVien_Layout.cshtml";
   
 }
+<link rel="stylesheet" type="text/css" href="~/css/thongbao.css">
 <div class='content'>
+    <table class="notification-table">
+        <thead>
+            <tr class="Inbox_header_dl">
+                <th>Tiêu đề</th>
+                <th>Người gửi</th>
+                <th>Thời gian gửi</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var thongBao in Model)
+            {
+                <tr>
+                    <td class="notification-title">
+                        <a href="#" class="show-content-link" data-ndid="@thongBao.MaThongBao">@thongBao.TieuDe</a>
+                    </td>
+                    <td>@thongBao.TenNguoiGui</td>
+                    <td>@thongBao.NgayGui</td>
+                </tr>
+            }
+        </tbody>
+    </table>
 
-    <h2>SinhViên</h2>
 
+    <div class="notification-content">
+        <!-- Content will be dynamically loaded here using JavaScript -->
+    </div>
 </div>
+<script>
+    $(document).ready(function () {
+        $(".show-content-link").on("click", function (e) {
+            e.preventDefault();
+
+            var ndid = $(this).data("ndid");
+            var contentDiv = $(".notification-content");
+
+            // Assuming you have an action method 'GetNotificationContent' to get the content
+            $.get("/SinhVien/GetNotificationContent", { ndid: ndid }, function (data) {
+                contentDiv.html(data);
+            });
+        });
+    });
+</script>

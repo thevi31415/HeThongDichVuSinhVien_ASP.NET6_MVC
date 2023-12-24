@@ -13,5 +13,6 @@ namespace HeThongDichVuSinhVien.Data
         }
        public DbSet<DangNhap> dangNhaps { get; set; }
        public DbSet<NguoiDung> nguoiDungs { get; set; }
+        public DbSet<ThongBao> thongbaos { get; set; }
     }
 }

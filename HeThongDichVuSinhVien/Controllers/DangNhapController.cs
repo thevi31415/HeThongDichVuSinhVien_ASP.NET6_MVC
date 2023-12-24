@@ -12,6 +12,7 @@ namespace HeThongDichVuSinhVien.Controllers
             _db = db;
         }
         [HttpGet]
+    
         public IActionResult Index()
         {
             return View();

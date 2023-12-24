@@ -39,4 +39,7 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=DangNhap}/{action=Index}/{id?}");
 
+
+
+
 app.Run();
