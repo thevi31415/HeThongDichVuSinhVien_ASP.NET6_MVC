@@ -34,10 +34,7 @@ namespace HeThongDichVuSinhVien.Controllers
             // Truyền thông tin người dùng đến View
             return View(nguoidung);
 
-          
-           
-
-
         }
+       
     }
 }

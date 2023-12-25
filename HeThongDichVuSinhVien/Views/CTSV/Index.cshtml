@@ -1,12 +1,68 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿
 @{
     Layout = "~/Views/Shared/CTSV_Layout.cshtml";
 
 }
+<link rel="stylesheet" type="text/css" href="~/css/thongbaoctsv.css">
 <div class='content'>
-  
-    <h2>ctsv</h2>
-    
+    <a href="" class="add-user-button">Gửi thông báo</a>
+    <h2>Thông báo đã nhận</h2>
+    <table class="notification-table">
+        <thead>
+            <tr class="Inbox_header_dl">
+                <th>Tiêu đề</th>
+                <th>Người gửi</th>
+                <th>Thời gian gửi</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr>
+                <td class="notification-title"><a href="xemnoidungCTSV?ndid=<%= MaThongBao %>"><%= thongbao.getTieuDe() %></a></td>
+                <td><%=nguoidung.getHoTen() %></td>
+                <td><%= thongbao.getNgayGui() %></td>
+            </tr>
+           
+        </tbody>
+    </table>
+    <h2>Thông báo đã gửi</h2>
+    <table class="notification-table">
+        <thead>
+            <tr class="Inbox_header_dl">
+                <th>Tiêu đề</th>
+                <th>Người gửi</th>
+                <th>Thời gian gửi</th>
+            </tr>
+        </thead>
+        <tbody>
+
+           
+            <tr>
+                <td class="notification-title"><a href="xemnoidungCTSV?ndid=<%= MaThongBao %>"><%= thongbao.getTieuDe() %></a></td>
+                <td><%=nguoidung.getHoTen() %></td>
+                <td><%= thongbao.getNgayGui() %></td>
+            </tr>
+           
+        </tbody>
+    </table>
+    <div class="notification-content">
+      
+    </div>
 </div>
+
+
+<style>
+
+    .content {
+        margin-top: 120px; /* Khoảng cách phía trên */
+        margin-right: 20px; /* Khoảng cách phía phải */
+        margin-bottom: 100px; /* Khoảng cách phía dưới */
+        margin-left: 330px;
+        height: 100vh; /* Khoảng cách phía trái */
+        z-index: 1; /* Đặt giá trị z-index để đảm bảo nội dung nằm trên menu */
+        position: relative;
+        background-color: white; /* Thêm màu nền trắng */
+        padding: 20px; /* Thêm padding để tạo khoảng trắng xung quanh nội dung */
+    }
+</style>
+
