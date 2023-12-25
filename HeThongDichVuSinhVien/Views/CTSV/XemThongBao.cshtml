@@ -36,6 +36,7 @@
             <tr class="Inbox_header_dl">
                 <th>Tiêu đề</th>
                 <th>Người nhận</th>
+                <th>Mã số sinh viên</th>
                 <th>Thời gian gửi</th>
             </tr>
         </thead>
@@ -49,6 +50,7 @@
                         <a class="show-content-link" asp-controller="CTSV" asp-action="XemThongBao" asp-route-id="@thongBao.Id"><i class="bi bi-envelope-fill"></i> @thongBao.TieuDe</a>
                     </td>
                     <td>@thongBao.TenNguoiGui</td>
+                    <td>@thongBao.MaNguoiNhan</td>
                     <td>@thongBao.NgayGui</td>
                 </tr>
             }
