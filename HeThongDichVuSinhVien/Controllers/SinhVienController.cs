@@ -26,6 +26,7 @@ namespace HeThongDichVuSinhVien.Controllers
                 {
                     var chiTietThongBao = new ChiTietThongBao
                     {
+                        Id = thongBao.Id,
                         MaThongBao = thongBao.MaTB,
                         TieuDe = thongBao.TieuDe,
                         NoiDung = thongBao.NoiDung,
@@ -70,6 +71,49 @@ namespace HeThongDichVuSinhVien.Controllers
         
           
 
+        }
+
+        public IActionResult XemThongBao(int? id)
+        {
+
+             Console.WriteLine("MaTB:" + id);
+            // Lọc thông báo theo MaNguoiNhan
+            string maNguoiNhan = HttpContext.Session.GetString("MaNguoiDung");
+            IEnumerable<ThongBao> thongbaoList = _db.thongbaos.Where(tb => tb.MaNguoiNhan == maNguoiNhan).ToList();
+            List<ChiTietThongBao> chitietthongbaolist = new List<ChiTietThongBao>();
+            foreach (var thongBao in thongbaoList)
+            {
+                NguoiDung nguoidung = _db.nguoiDungs.SingleOrDefault(nd => nd.MaNguoiDung == thongBao.MaNguoiGui);
+
+                if (nguoidung != null)
+                {
+                    var chiTietThongBao = new ChiTietThongBao
+                    {
+                        Id = thongBao.Id,
+                        MaThongBao = thongBao.MaTB,
+                        TieuDe = thongBao.TieuDe,
+                        NoiDung = thongBao.NoiDung,
+                        MaNguoiNhan = thongBao.MaNguoiNhan,
+                        MaNguoiGui = thongBao.MaNguoiGui,
+                        TenNguoiGui = nguoidung.HoTen,
+                        TenNguoiNhan = "CTSV",
+                        NgayGui = thongBao.NgayGui
+                        // Thêm các thuộc tính khác của ChiTietThongBao tại đây
+                    };
+
+                    chitietthongbaolist.Add(chiTietThongBao);
+                }
+                else
+                {
+                    // Handle the case where nguoidung is null, e.g., log an error or take appropriate action.
+                }
+            }
+
+            string noidungthongbao = _db.thongbaos.FirstOrDefault(c => c.Id == id).NoiDung;
+
+            ViewData["NoiDungThongBao"] =noidungthongbao;
+
+            return View(chitietthongbaolist);
         }
     }
 }

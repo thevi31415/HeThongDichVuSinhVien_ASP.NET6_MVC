@@ -3,6 +3,7 @@
     public class ChiTietThongBao
     {
 
+        public int Id { get; set; }
         public string MaThongBao { get; set; }
         public string TieuDe {  get; set; }
         public string NoiDung { get; set; }

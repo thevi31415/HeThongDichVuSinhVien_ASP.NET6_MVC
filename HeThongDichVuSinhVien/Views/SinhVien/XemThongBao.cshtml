@@ -1,7 +1,7 @@
 ﻿@model List<ChiTietThongBao>
 @{
     Layout = "~/Views/Shared/SinhVien_Layout.cshtml";
-  
+
 }
 <link rel="stylesheet" type="text/css" href="~/css/thongbao.css">
 <div class='content'>
@@ -26,10 +26,9 @@
             }
         </tbody>
     </table>
-
-
     <div class="notification-content">
-        <!-- Content will be dynamically loaded here using JavaScript -->
+        <p>@ViewData["NoiDungThongBao"]</p>
+
     </div>
 </div>
 <script>
