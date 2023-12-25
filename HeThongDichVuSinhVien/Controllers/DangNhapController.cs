@@ -1,5 +1,7 @@
 ﻿using HeThongDichVuSinhVien.Data;
 using HeThongDichVuSinhVien.Models;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HeThongDichVuSinhVien.Controllers
@@ -65,8 +67,24 @@ namespace HeThongDichVuSinhVien.Controllers
         }
         public IActionResult Logout()
         {
+            /*            HttpContext.Session.Clear();
+                        HttpContext.Session.Remove("Role");
+                        return RedirectToAction("Index", "DangNhap");*/
+
+
+            // Xóa tất cả thông tin đăng nhập và session
+            HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             HttpContext.Session.Clear();
             HttpContext.Session.Remove("Role");
+
+            // Xóa tất cả cookies
+            var cookies = Request.Cookies.Keys;
+            foreach (var cookie in cookies)
+            {
+                Response.Cookies.Delete(cookie);
+            }
+
+            // Redirect đến trang đăng nhập
             return RedirectToAction("Index", "DangNhap");
         }
     }
