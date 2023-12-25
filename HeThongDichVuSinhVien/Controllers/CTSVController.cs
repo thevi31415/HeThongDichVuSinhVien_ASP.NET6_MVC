@@ -14,7 +14,72 @@ namespace HeThongDichVuSinhVien.Controllers
         }
         public IActionResult Index()
         {
-            return View();
+            // Lọc thông báo theo MaNguoiNhan
+            string maNguoiNhan = HttpContext.Session.GetString("MaNguoiDung");
+            IEnumerable<ThongBao> thongbaoList = _db.thongbaos.Where(tb => tb.MaNguoiNhan == maNguoiNhan).ToList();
+            List<ChiTietThongBao> chitietthongbaolist = new List<ChiTietThongBao>();
+            foreach (var thongBao in thongbaoList)
+            {
+                NguoiDung nguoidung = _db.nguoiDungs.SingleOrDefault(nd => nd.MaNguoiDung == thongBao.MaNguoiGui);
+
+                if (nguoidung != null)
+                {
+                    var chiTietThongBao = new ChiTietThongBao
+                    {
+                        Id = thongBao.Id,
+                        MaThongBao = thongBao.MaTB,
+                        TieuDe = thongBao.TieuDe,
+                        NoiDung = thongBao.NoiDung,
+                        MaNguoiNhan = thongBao.MaNguoiNhan,
+                        MaNguoiGui = thongBao.MaNguoiGui,
+                        TenNguoiGui = nguoidung.HoTen,
+                        TenNguoiNhan = "CTSV",
+                        NgayGui = thongBao.NgayGui
+                        // Thêm các thuộc tính khác của ChiTietThongBao tại đây
+                    };
+
+                    chitietthongbaolist.Add(chiTietThongBao);
+                }
+                else
+                {
+                    // Handle the case where nguoidung is null, e.g., log an error or take appropriate action.
+                }
+            }
+            //Thong bao da gui
+
+            IEnumerable<ThongBao> thongbaoListdagui = _db.thongbaos.Where(tb => tb.MaNguoiGui== maNguoiNhan).ToList();
+            List<ChiTietThongBao> chitietthongbaolistdagui = new List<ChiTietThongBao>();
+            foreach (var thongBao in thongbaoListdagui)
+            {
+                NguoiDung nguoidung = _db.nguoiDungs.SingleOrDefault(nd => nd.MaNguoiDung == thongBao.MaNguoiNhan);
+
+                if (nguoidung != null)
+                {
+                    var chiTietThongBao = new ChiTietThongBao
+                    {
+                        Id = thongBao.Id,
+                        MaThongBao = thongBao.MaTB,
+                        TieuDe = thongBao.TieuDe,
+                        NoiDung = thongBao.NoiDung,
+                        MaNguoiNhan = thongBao.MaNguoiNhan,
+                        MaNguoiGui = thongBao.MaNguoiGui,
+                        TenNguoiGui = nguoidung.HoTen,
+                        TenNguoiNhan = "CTSV",
+                        NgayGui = thongBao.NgayGui
+                        // Thêm các thuộc tính khác của ChiTietThongBao tại đây
+                    };
+
+                    chitietthongbaolistdagui.Add(chiTietThongBao);
+                }
+                else
+                {
+                    // Handle the case where nguoidung is null, e.g., log an error or take appropriate action.
+                }
+            }
+
+
+            ViewData["ThongBaoDaGui"] = chitietthongbaolistdagui;
+            return View(chitietthongbaolist);
         }
         public IActionResult ThongTin()
         {
@@ -56,6 +121,81 @@ namespace HeThongDichVuSinhVien.Controllers
                 _db.thongbaos.Add(thongbao);
                 _db.SaveChanges();
                 return RedirectToAction("Index");
+        }
+        public IActionResult XemThongBao(int? id)
+        {
+
+            Console.WriteLine("MaTB:" + id);
+            // Lọc thông báo theo MaNguoiNhan
+            string maNguoiNhan = HttpContext.Session.GetString("MaNguoiDung");
+            IEnumerable<ThongBao> thongbaoList = _db.thongbaos.Where(tb => tb.MaNguoiNhan == maNguoiNhan).ToList();
+            List<ChiTietThongBao> chitietthongbaolist = new List<ChiTietThongBao>();
+            foreach (var thongBao in thongbaoList)
+            {
+                NguoiDung nguoidung = _db.nguoiDungs.SingleOrDefault(nd => nd.MaNguoiDung == thongBao.MaNguoiGui);
+
+                if (nguoidung != null)
+                {
+                    var chiTietThongBao = new ChiTietThongBao
+                    {
+                        Id = thongBao.Id,
+                        MaThongBao = thongBao.MaTB,
+                        TieuDe = thongBao.TieuDe,
+                        NoiDung = thongBao.NoiDung,
+                        MaNguoiNhan = thongBao.MaNguoiNhan,
+                        MaNguoiGui = thongBao.MaNguoiGui,
+                        TenNguoiGui = nguoidung.HoTen,
+                        TenNguoiNhan = "CTSV",
+                        NgayGui = thongBao.NgayGui
+                        // Thêm các thuộc tính khác của ChiTietThongBao tại đây
+                    };
+
+                    chitietthongbaolist.Add(chiTietThongBao);
+                }
+                else
+                {
+                    // Handle the case where nguoidung is null, e.g., log an error or take appropriate action.
+                }
+            }
+            //Thong bao da gui
+
+            IEnumerable<ThongBao> thongbaoListdagui = _db.thongbaos.Where(tb => tb.MaNguoiGui == maNguoiNhan).ToList();
+            List<ChiTietThongBao> chitietthongbaolistdagui = new List<ChiTietThongBao>();
+            foreach (var thongBao in thongbaoListdagui)
+            {
+                NguoiDung nguoidung = _db.nguoiDungs.SingleOrDefault(nd => nd.MaNguoiDung == thongBao.MaNguoiNhan);
+
+                if (nguoidung != null)
+                {
+                    var chiTietThongBao = new ChiTietThongBao
+                    {
+                        Id = thongBao.Id,
+                        MaThongBao = thongBao.MaTB,
+                        TieuDe = thongBao.TieuDe,
+                        NoiDung = thongBao.NoiDung,
+                        MaNguoiNhan = thongBao.MaNguoiNhan,
+                        MaNguoiGui = thongBao.MaNguoiGui,
+                        TenNguoiGui = nguoidung.HoTen,
+                        TenNguoiNhan = "CTSV",
+                        NgayGui = thongBao.NgayGui
+                        // Thêm các thuộc tính khác của ChiTietThongBao tại đây
+                    };
+
+                    chitietthongbaolistdagui.Add(chiTietThongBao);
+                }
+                else
+                {
+                    // Handle the case where nguoidung is null, e.g., log an error or take appropriate action.
+                }
+            }
+
+
+            ViewData["ThongBaoDaGui"] = chitietthongbaolistdagui;
+            string noidungthongbao = _db.thongbaos.FirstOrDefault(c => c.Id == id).NoiDung;
+
+            ViewData["NoiDungThongBao"] = noidungthongbao;
+
+            return View(chitietthongbaolist);
         }
         static string GenerateRandomString(string prefix, int length)
         {

@@ -1,7 +1,6 @@
 ﻿@model List<ChiTietThongBao>
 @{
     Layout = "~/Views/Shared/CTSV_Layout.cshtml";
-    // Lấy List từ ViewData
     List<ChiTietThongBao> thongbaodagui = ViewData["ThongBaoDaGui"] as List<ChiTietThongBao>;
 }
 <link rel="stylesheet" type="text/css" href="~/css/thongbaoctsv.css">
@@ -28,7 +27,7 @@
                     <td>@thongBao.NgayGui</td>
                 </tr>
             }
-           
+
         </tbody>
     </table>
     <h2>Thông báo đã gửi</h2>
@@ -53,11 +52,12 @@
                     <td>@thongBao.NgayGui</td>
                 </tr>
             }
-           
+
+
         </tbody>
     </table>
     <div class="notification-content">
-      
+        <p>@ViewData["NoiDungThongBao"]</p>
     </div>
 </div>
 
@@ -76,4 +76,5 @@
         padding: 20px; /* Thêm padding để tạo khoảng trắng xung quanh nội dung */
     }
 </style>
+
 
