@@ -197,6 +197,23 @@ namespace HeThongDichVuSinhVien.Controllers
 
             return View(chitietthongbaolist);
         }
+        public IActionResult XoaThongBaoDaGui()
+        {
+            string maNguoigui = HttpContext.Session.GetString("MaNguoiDung");
+            // Lấy danh sách các thongbao cần xóa theo MaNguoiGui
+            var thongBaoToDelete = _db.thongbaos.Where(tb => tb.MaNguoiGui == maNguoigui).ToList();
+
+            // Kiểm tra xem có thongbao cần xóa không
+            if (thongBaoToDelete.Count > 0)
+            {
+                // Xóa thongbao từ DbSet
+                _db.thongbaos.RemoveRange(thongBaoToDelete);
+
+                // Lưu thay đổi vào database
+                _db.SaveChanges();
+            }
+            return RedirectToAction("Index");
+        }
         static string GenerateRandomString(string prefix, int length)
         {
             Random random = new Random();
