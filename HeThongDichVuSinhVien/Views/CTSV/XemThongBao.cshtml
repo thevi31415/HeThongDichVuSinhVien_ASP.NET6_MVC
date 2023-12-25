@@ -60,7 +60,7 @@
         </tbody>
     </table>
     <div class="notification-content">
-        <p>@ViewData["NoiDungThongBao"]</p>
+        @Html.Raw(@ViewData["NoiDungThongBao"])
     </div>
 </div>
 <style>
@@ -99,7 +99,7 @@
         margin-right: 20px; /* Khoảng cách phía phải */
         margin-bottom: 100px; /* Khoảng cách phía dưới */
         margin-left: 330px;
-        height: 100vh; /* Khoảng cách phía trái */
+        height: 150vh; /* Khoảng cách phía trái */
         z-index: 1; /* Đặt giá trị z-index để đảm bảo nội dung nằm trên menu */
         position: relative;
         background-color: white; /* Thêm màu nền trắng */

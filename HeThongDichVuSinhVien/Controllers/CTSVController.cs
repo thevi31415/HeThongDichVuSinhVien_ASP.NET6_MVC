@@ -115,7 +115,7 @@ namespace HeThongDichVuSinhVien.Controllers
             thongbao.MaTB = GenerateRandomString("TB", 8);
             thongbao.MaNguoiGui = HttpContext.Session.GetString("MaNguoiDung"); ;
             thongbao.NgayGui = DateTime.Now;
-            Console.WriteLine("To thong bao" + thongbao.TieuDe + thongbao.NoiDung);
+            Console.WriteLine("To thong bao: " + thongbao.TieuDe + " Nôi dung: " + thongbao.NoiDung);
             Console.WriteLine("Doi tuong" + thongbao.MaTB);
          
                 _db.thongbaos.Add(thongbao);
