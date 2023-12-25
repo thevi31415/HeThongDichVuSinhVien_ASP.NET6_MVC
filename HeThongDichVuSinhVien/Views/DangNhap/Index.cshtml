@@ -4,6 +4,7 @@
     <link rel="stylesheet" type="text/css" href="~/css/dangnhap.css">
 
     <link rel="icon" type="image/x-icon" href="~/img/favicon.ico" />
+
 </head>
 <body>
     <form method="post" asp-action="Index">
@@ -15,24 +16,12 @@
         </div>
 
 
-        <input asp-for="TenDangNhap" type="text" placeholder="Tên đăng nhập" />
+        <input asp-for="TenDangNhap" type="text" placeholder="Tên đăng nhập" required />
 
-        <input asp-for="MatKhau" type="password" class="form-control" placeholder="Mật khẩu" />
+        <input asp-for="MatKhau" type="password" class="form-control" placeholder="Mật khẩu" required />
     
        
             <input type="submit" class="btn btn-primary"></input>
       
     </form>
-
-    @* <form method="post" asp-action="Index">
-        <div class="logo-container">
-            <img src="/DoAnCuoiKyDVSV_Nhom14_FINAL_2/templates/dangnhap/image/logo.jpg" alt="Logo">
-        </div>
-        <p class="text-danger">${mess } <p>
-
-            </div>
-            <input type="text" asp-for="TenDangNhap" name="txtName" placeholder="Tên đăng nhập">
-            <input type="password" asp-for="MatKhau" name="txtPass" placeholder="Mật khẩu">
-            <input type="submit" value="Đăng nhập">
-    </form> *@
 </body>

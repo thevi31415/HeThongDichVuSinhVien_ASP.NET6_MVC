@@ -35,6 +35,44 @@ namespace HeThongDichVuSinhVien.Controllers
             return View(nguoidung);
 
         }
-       
+        //GET
+        public IActionResult TaoThongBao()
+        {
+
+            return View();
+        }
+        //POST
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult TaoThongBao(ThongBao thongbao)
+        {
+         
+            thongbao.MaTB = GenerateRandomString("TB", 8);
+            thongbao.MaNguoiGui = HttpContext.Session.GetString("MaNguoiDung"); ;
+            thongbao.NgayGui = DateTime.Now;
+            Console.WriteLine("To thong bao" + thongbao.TieuDe + thongbao.NoiDung);
+            Console.WriteLine("Doi tuong" + thongbao.MaTB);
+         
+                _db.thongbaos.Add(thongbao);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+        }
+        static string GenerateRandomString(string prefix, int length)
+        {
+            Random random = new Random();
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+            // Tạo một mảng ký tự ngẫu nhiên có độ dài `length - prefix.Length`
+            char[] randomChars = new char[length - prefix.Length];
+            for (int i = 0; i < randomChars.Length; i++)
+            {
+                randomChars[i] = chars[random.Next(chars.Length)];
+            }
+
+            // Kết hợp prefix và mảng ký tự ngẫu nhiên để tạo chuỗi hoàn chỉnh
+            string randomString = prefix + new string(randomChars);
+            return randomString;
+        }
+
     }
 }

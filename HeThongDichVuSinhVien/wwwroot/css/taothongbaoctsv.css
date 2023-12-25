@@ -1,0 +1,45 @@
+﻿
+.thongbao-form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+    .thongbao-form label {
+        display: block;
+        margin-bottom: 8px;
+    }
+
+    .thongbao-form input,
+    .thongbao-form textarea {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 16px;
+        box-sizing: border-box;
+        border-radius: 4px; /* Đặt border-radius ở đây */
+        font-size: 20px;
+    }
+
+    .thongbao-form textarea {
+        resize: vertical;
+    }
+
+    .thongbao-form button {
+        background-color: #4caf50;
+        color: #fff;
+        padding: 15px 25px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease; /* Thêm hiệu ứng màu nền */
+    }
+
+        .thongbao-form button:hover {
+            background-color: #45a049; /* Màu nền khi hover */
+        }
+
+        /* Hiệu ứng khi nhấn nút */
+        .thongbao-form button:active {
+            transform: translateY(2px);
+        }

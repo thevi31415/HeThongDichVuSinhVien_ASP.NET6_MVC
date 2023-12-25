@@ -1,0 +1,30 @@
+﻿@model ThongBao
+@{
+    Layout = "~/Views/Shared/CTSV_Layout.cshtml";
+
+}
+
+<link rel="stylesheet" type="text/css" href="~/css/taothongbaoctsv.css">
+<div class='content'>
+    <form method="post" class="thongbao-form">
+    
+        <input type="text" id="maTB" name="maTB" hidden >
+
+       
+        <input type="text" id="maNguoiGui" name="maNguoiGui" hidden>
+
+        <label for="maNguoiNhan">MaNguoiNhan:</label>
+        <input type="text" id="maNguoiNhan" name="maNguoiNhan" asp-for="MaNguoiNhan" required>
+
+        <label for="tieuDe">TieuDe:</label>
+        <input type="text" id="tieuDe" name="tieuDe" asp-for="TieuDe" required>
+
+        <label for="noiDung">NoiDung:</label>
+        <textarea id="noiDung" name="noiDung" rows="4" asp-for="NoiDung" required></textarea>
+
+        <input type="datetime-local" id="ngayGui" name="ngayGui" hidden>
+
+        <button type="submit"><i class="bi bi-send-check-fill"></i> Gửi thông báo</button>
+    </form>
+
+</div>
