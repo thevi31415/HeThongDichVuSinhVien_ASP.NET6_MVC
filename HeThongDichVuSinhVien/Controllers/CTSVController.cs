@@ -233,7 +233,23 @@ namespace HeThongDichVuSinhVien.Controllers
 
 
         }
+        public IActionResult XoaTaiKhoan(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            var category = _db.dangNhaps.FirstOrDefault(c => c.ID == id);
+            if (category == null)
+            {
+                return NotFound();
+            }
 
+            _db.dangNhaps.Remove(category);
+            _db.SaveChanges();
+            Console.WriteLine("Xoa tài khoan" + id.ToString());
+            return RedirectToAction("QuanLyTaiKhoan");
+        }
 
         static string GenerateRandomString(string prefix, int length)
         {
