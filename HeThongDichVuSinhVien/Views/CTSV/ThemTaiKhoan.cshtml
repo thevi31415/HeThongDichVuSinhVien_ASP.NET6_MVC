@@ -1,0 +1,84 @@
+﻿@model DangNhap
+@{
+    Layout = "~/Views/Shared/CTSV_Layout.cshtml";
+    // Ép kiểu giá trị từ ViewData sang kiểu List<NguoiDung>
+    var usersWithoutAccount = ViewData["UsersWithoutAccount"] as List<NguoiDung>;
+}
+
+<link rel="stylesheet" type="text/css" href="~/css/themtaikhoan.css">
+
+<div class='content'>
+    <div class="formbold-main-wrapper">
+
+        <div class="formbold-form-wrapper">
+
+            <form action="ThemTaiKhoan" method="post">
+                <div class="formbold-form-title">
+                    <div style="text-align: center;">
+                        <h2 class="">Tạo tài khoản người dùng</h2>
+                    </div>
+                    <p>
+                        Mỗi người dùng chỉ có một tài khoản và phải thêm người dùng trước khi tạo tài khoản cho người đó.
+                    </p>
+                </div>
+
+                <div class="formbold-mb-3">
+                    <label for="maNguoiDung" class="formbold-form-label">
+                        Mã Người Dùng
+                    </label>
+                    @if (usersWithoutAccount != null)
+                    {
+                        <select asp-for="MaNguoiDung" name="maNguoiDung" id="maNguoiDung" class="formbold-form-input" required>
+                            @foreach (var nguoiDung in usersWithoutAccount)
+                            {
+                                <option value="@nguoiDung.MaNguoiDung">@nguoiDung.MaNguoiDung</option>
+                            }
+                        </select>
+                    }
+                    else
+                    {
+                        <p>No users available.</p>
+                    }
+                </div>
+
+
+
+                <div class="formbold-mb-3">
+                    <label for="address2" class="formbold-form-label">
+                        Tên đăng nhập
+                    </label>
+                    <input asp-for="TenDangNhap"
+                           type="TenDangNhap"
+                           name="TenDangNhap"
+                           id="TenDangNhap"
+                           class="formbold-form-input" required />
+                </div>
+                <div class="formbold-mb-3">
+                    <label for="address2" class="formbold-form-label">
+                        Mật khẩu
+                    </label>
+                    <input asp-for="MatKhau" type="text"
+                           name="MatKhau"
+                           id="MatKhau"
+                           class="formbold-form-input" required />
+                </div>
+                <div class="formbold-mb-3">
+                    <label for="maNguoiDung" class="formbold-form-label">
+                        Mã Người Dùng
+                    </label>
+                    <select asp-for="VaiTro" name="VaiTro" id="VaiTro" class="formbold-form-input" required>
+
+                        <option value="SV">Sinh Viên</option>
+                        <option value="CTSV">Cộng tác sinh viên</option>
+                    </select>
+                </div>
+
+
+
+                <button class="formbold-btn">Tạo tài khoản</button>
+            </form>
+        </div>
+    </div>
+
+</div><!-- /.container -->
+

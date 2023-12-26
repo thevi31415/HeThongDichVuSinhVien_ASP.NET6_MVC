@@ -278,6 +278,40 @@ namespace HeThongDichVuSinhVien.Controllers
             return RedirectToAction("QuanLyTaiKhoan");
         }
 
+        public IActionResult ThemTaiKhoan()
+        {
+            // Lấy danh sách người dùng chưa có tài khoản
+            List<NguoiDung> usersWithoutAccount = _db.nguoiDungs
+                .Where(u => !_db.dangNhaps.Any(d => d.MaNguoiDung == u.MaNguoiDung))
+                .ToList();
+            if(usersWithoutAccount.Count == 0)
+            {
+                Console.WriteLine("Khong tim thay nguoi nao 0");
+            }
+            else
+            {
+                ViewData["UsersWithoutAccount"] = usersWithoutAccount;
+            }
+
+            return View();
+        }
+
+        [HttpPost]
+    
+        public IActionResult ThemTaiKhoan(DangNhap taikhoan)
+        {
+
+
+            if (ModelState.IsValid)
+            {
+                _db.dangNhaps.Add(taikhoan);
+                _db.SaveChanges();
+                TempData["DeleteSuccess"] = "Thêm tài khoản thành công !";
+                return RedirectToAction("QuanLyTaiKhoan");
+
+            }
+            return View();
+        }
         static string GenerateRandomString(string prefix, int length)
         {
             Random random = new Random();
