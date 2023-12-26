@@ -29,7 +29,12 @@ namespace HeThongDichVuSinhVien.Controllers
 
                 if (u != null)
                 {
+                    // Cập nhật thời gian truy cập gần nhất và tăng giá trị LuotTruyCap
+                    u.TruyCapGanNhat = DateTime.Now;
+                    u.LuotTruyCap++;
 
+                    // Lưu thay đổi vào cơ sở dữ liệu
+                    _db.SaveChanges();
                     HttpContext.Session.SetString("Role", u.VaiTro.ToString());
                     HttpContext.Session.SetString("MaNguoiDung", u.MaNguoiDung.ToString());
                     HttpContext.Session.SetString("TenDangNhap", u.TenDangNhap.ToString());
