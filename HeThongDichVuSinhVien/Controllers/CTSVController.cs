@@ -1,6 +1,9 @@
 ﻿using HeThongDichVuSinhVien.Data;
 using HeThongDichVuSinhVien.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
+using X.PagedList;
 
 namespace HeThongDichVuSinhVien.Controllers
 {
@@ -214,6 +217,24 @@ namespace HeThongDichVuSinhVien.Controllers
             }
             return RedirectToAction("Index");
         }
+
+
+        public IActionResult QuanLyTaiKhoan(int? page)
+        {
+            int pageSize = 10;
+            int pageNumber = page==null || page<0?1:page.Value;
+
+            IEnumerable<DangNhap> dangnhaplist = _db.dangNhaps;
+            var listdangnhap = _db.dangNhaps.AsNoTracking().OrderBy(x => x.MaNguoiDung);
+             PagedList<DangNhap> lst = new PagedList<DangNhap>(dangnhaplist, pageNumber, pageSize);
+            
+            
+            return View(lst);
+
+
+        }
+
+
         static string GenerateRandomString(string prefix, int length)
         {
             Random random = new Random();
