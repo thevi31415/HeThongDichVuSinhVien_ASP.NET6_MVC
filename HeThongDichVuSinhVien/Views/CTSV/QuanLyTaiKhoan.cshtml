@@ -4,127 +4,33 @@
 @{
     Layout = "~/Views/Shared/CTSV_Layout.cshtml";
 }
-<style>
-  
-    h1 {
-        color: #3498db;
-        text-align: center;
-        margin-bottom: 0px;
-    }
-  
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 20px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        overflow: hidden;
-        border-radius: 5px;
-    }
 
-    th, td {
-        padding: 15px;
-        text-align: left;
-        border-bottom: 1px solid #ddd;
-        transition: background-color 0.3s ease;
-    }
-
-    th {
-        background-color: #3155A6;
-        color: white;
-    }
-
-    tbody tr:hover {
-        background-color: #f8f8f8;
-    }
-
-        tbody tr:hover td {
-            background-color: #e0e0e0;
-        }
-
-    .pagination {
-        display: inline-block;
-        list-style: none;
-        padding: 0;
-        text-align: center;
-        margin-top: 10px;
-    }
-
-        .pagination li {
-            display: inline;
-            margin-right: 5px;
-        }
-
-        .pagination a, .pagination span {
-            color: #333;
-            padding: 10px 15px;
-            text-decoration: none;
-            border: 1px solid #ddd;
-            background-color: #f5f5f5;
-            border-radius: 3px;
-            transition: background-color 0.3s ease;
-        }
-
-        .pagination .disabled span {
-            color: #999;
-        }
-
-        .pagination .active span {
-            background-color: #3498db;
-            color: white;
-        }
-
-    td.actions {
-        text-align: center;
-    }
-
-        td.actions a {
-            display: inline-block;
-            margin: 0 5px;
-            padding: 8px 12px;
-            text-decoration: none;
-            color: #fff;
-            border-radius: 3px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        td.actions .edit {
-            background-color: #3498db;
-        }
-
-        td.actions .delete {
-            background-color: #e74c3c;
-        }
-
-        td.actions a:hover {
-            opacity: 0.8;
-        }
-
-    .btnthemtaikhoan {
-        display: inline-block;
-        padding: 10px 15px;
-        font-size: 16px;
-        text-align: center;
-        text-decoration: none;
-        border-radius: 25px;
-        transition: background-color 0.3s ease, color 0.3s ease;
-        background-color: #3498db;
-        color: white;
-        cursor: pointer;
-    }
-
-        .btnthemtaikhoan:hover {
-            background-color: #2980b9;
-        }
-
-        .btnthemtaikhoan i {
-            margin-right: 8px;
-        }
-</style>
-
+<link rel="stylesheet" type="text/css" href="~/css/quanlytaikhoan.css">
 <div class='content'>
     <h1>Quản lý tài khoản</h1>
-    <a asp-controller="CTSV" asp-action="" class="btnthemtaikhoan"> <i class="bi bi-plus-square-fill"></i> &nbsp Thêm tài khoản</a>
+    <div id="deleteAlert" class="alert" style="display:none;"></div>
+    <div class="header">
+        <a asp-controller="CTSV" asp-action="" class="btnthemtaikhoan"> <i class="bi bi-plus-square-fill"></i> &nbsp Thêm tài khoản</a>
+
+        <div class="search-bar">
+            <form class="d-flex" asp-action="QuanLyTaiKhoan" asp-controller="CTSV">
+                <input name="searchString" id="search-input" class="form-control me-1" type="search" placeholder="Search" aria-label="Search" value="@ViewData["CurrentFilter"]" style="width: 500px;">
+
+                <select name="searchBy" id="search-select" class="form-select">
+                    <option value="TenDangNhap" selected="@(ViewData["SearchBy"] as string == "TenDangNhap")"><text>Tên</text></option>
+                    <option value="MaNguoiDung" selected="@(ViewData["SearchBy"] as string == "MaNguoiDung")"><text>Mã</text></option>
+                </select>
+
+                <button id="search-button" class="btn btn-dark" type="submit"><i class="fa fa-search"></i></button>
+            </form>
+            <div id="search-result" class="search-result"></div>
+        </div>
+    </div>
+
+
+
+
+
     <table>
         <thead>
             <tr>
@@ -162,11 +68,30 @@
         </tbody>
     </table>
     <div class="pagination">
-        @Html.PagedListPager(Model, page => Url.Action("QuanLyTaiKhoan", new { page = page }))
+        @Html.PagedListPager(
+                 Model,
+                 page => Url.Action("QuanLyTaiKhoan", new { page = page, searchString = ViewData["CurrentFilter"], searchBy = ViewData["SearchBy"] })
+                 )
     </div>
+ 
 </div>
 <style>
     .context {
         height: 200vh;
     }
 </style>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <script>
+    $(document).ready(function () {
+        var deleteSuccessMessage = '@Html.Raw(TempData["DeleteSuccess"])';
+        if (deleteSuccessMessage) {
+            $("#deleteAlert").text(deleteSuccessMessage).addClass("alert-success").show();
+
+            // Ẩn thông báo sau 5 giây
+            setTimeout(function () {
+                $("#deleteAlert").fadeOut("slow");
+            }, 5000);
+        }
+    });
+    </script>

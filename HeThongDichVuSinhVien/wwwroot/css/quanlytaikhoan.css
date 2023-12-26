@@ -1,0 +1,236 @@
+﻿
+
+h1 {
+    color: #3498db;
+    text-align: center;
+    margin-bottom: 0px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    transition: background-color 0.3s ease;
+}
+
+th {
+    background-color: #3155A6;
+    color: white;
+}
+
+tbody tr:hover {
+    background-color: #f8f8f8;
+}
+
+    tbody tr:hover td {
+        background-color: #e0e0e0;
+    }
+
+.pagination {
+    display: inline-block;
+    list-style: none;
+    padding: 0;
+    text-align: center;
+    margin-top: 10px;
+}
+
+    .pagination li {
+        display: inline;
+        margin-right: 5px;
+    }
+
+    .pagination a, .pagination span {
+        color: #333;
+        padding: 10px 15px;
+        text-decoration: none;
+        border: 1px solid #ddd;
+        background-color: #f5f5f5;
+        border-radius: 3px;
+        transition: background-color 0.3s ease;
+    }
+
+    .pagination .disabled span {
+        color: #999;
+    }
+
+    .pagination .active span {
+        background-color: #3498db;
+        color: white;
+    }
+
+td.actions {
+    text-align: center;
+}
+
+    td.actions a {
+        display: inline-block;
+        margin: 0 5px;
+        padding: 8px 12px;
+        text-decoration: none;
+        color: #fff;
+        border-radius: 3px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    td.actions .edit {
+        background-color: #3498db;
+    }
+
+    td.actions .delete {
+        background-color: #e74c3c;
+    }
+
+    td.actions a:hover {
+        opacity: 0.8;
+    }
+
+.btnthemtaikhoan {
+    display: inline-block;
+    padding: 10px 15px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 25px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    background-color: #3498db;
+    color: white;
+    cursor: pointer;
+}
+
+    .btnthemtaikhoan:hover {
+        background-color: #2980b9;
+    }
+
+    .btnthemtaikhoan i {
+        margin-right: 8px;
+    }
+
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.alert-success {
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+}
+
+
+
+/* CSS code for the search bar */
+.search-bar {
+    /* Set the position and size of the search bar */
+    position: relative;
+}
+
+    .search-bar input {
+        /* Set the style of the input box */
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    .search-bar select {
+        /* Set the style of the select box */
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    .search-bar button {
+        /* Set the style of the search button */
+        border: none;
+        border-radius: 5px;
+        padding: 10px;
+        background-color: #333;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+        .search-bar button:hover {
+            /* Set the hover effect of the search button */
+            background-color: #555;
+        }
+
+        .search-bar button i {
+            /* Set the style of the search icon */
+            font-size: 20px;
+        }
+
+.search-result {
+    /* Set the style of the search result container */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-top: none;
+    display: none;
+}
+
+    .search-result ul {
+        /* Set the style of the search result list */
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .search-result li {
+        /* Set the style of the search result item */
+        padding: 10px;
+        cursor: pointer;
+    }
+
+        .search-result li:hover {
+            /* Set the hover effect of the search result item */
+            background-color: #eee;
+        }
+
+.header {
+    display: flex;
+    align-items: center;
+}
+
+.btnthemtaikhoan {
+    margin-right: 10px; /* Có thể điều chỉnh khoảng cách giữa nút thêm và ô tìm kiếm */
+}
+
+.search-bar {
+    display: flex;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header {
+    width: 100%; /* Đặt chiều rộng của header là 100% để nó căn giữa trong div.content */
+}
+
+.search-bar {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px; /* Điều chỉnh khoảng cách giữa nút thêm và ô tìm kiếm */
+}
+
+

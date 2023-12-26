@@ -219,19 +219,45 @@ namespace HeThongDichVuSinhVien.Controllers
         }
 
 
-        public IActionResult QuanLyTaiKhoan(int? page)
+        public IActionResult QuanLyTaiKhoan(int? page, string searchString, string searchBy)
         {
+            /* int pageSize = 10;
+             int pageNumber = page==null || page<0?1:page.Value;
+
+             IEnumerable<DangNhap> dangnhaplist = _db.dangNhaps;
+
+
+
+             var listdangnhap = _db.dangNhaps.AsNoTracking().OrderBy(x => x.MaNguoiDung);
+              PagedList<DangNhap> lst = new PagedList<DangNhap>(dangnhaplist, pageNumber, pageSize);
+
+
+             return View(lst);
+ */
             int pageSize = 10;
-            int pageNumber = page==null || page<0?1:page.Value;
+            int pageNumber = page == null || page < 0 ? 1 : page.Value;
 
-            IEnumerable<DangNhap> dangnhaplist = _db.dangNhaps;
-            var listdangnhap = _db.dangNhaps.AsNoTracking().OrderBy(x => x.MaNguoiDung);
-             PagedList<DangNhap> lst = new PagedList<DangNhap>(dangnhaplist, pageNumber, pageSize);
-            
-            
+            IQueryable<DangNhap> dangnhaplist = _db.dangNhaps;
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                if ("TenDangNhap".Equals(searchBy, StringComparison.OrdinalIgnoreCase))
+                {
+                    dangnhaplist = dangnhaplist.Where(x => x.TenDangNhap.Contains(searchString));
+                }
+                else if ("MaNguoiDung".Equals(searchBy, StringComparison.OrdinalIgnoreCase))
+                {
+                    dangnhaplist = dangnhaplist.Where(x => x.MaNguoiDung.Contains(searchString));
+                }
+            }
+
+            var listdangnhap = dangnhaplist.AsNoTracking().OrderBy(x => x.MaNguoiDung);
+            PagedList<DangNhap> lst = new PagedList<DangNhap>(listdangnhap, pageNumber, pageSize);
+
+            ViewData["CurrentFilter"] = searchString;
+            ViewData["SearchBy"] = searchBy;
+
             return View(lst);
-
-
         }
         public IActionResult XoaTaiKhoan(int? id)
         {
@@ -248,6 +274,7 @@ namespace HeThongDichVuSinhVien.Controllers
             _db.dangNhaps.Remove(category);
             _db.SaveChanges();
             Console.WriteLine("Xoa tài khoan" + id.ToString());
+            TempData["DeleteSuccess"] = "Tài khoản đã được xóa thành công.";
             return RedirectToAction("QuanLyTaiKhoan");
         }
 
