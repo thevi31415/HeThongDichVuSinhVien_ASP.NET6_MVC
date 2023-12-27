@@ -3,6 +3,7 @@ using HeThongDichVuSinhVien.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using System.Globalization;
 using X.PagedList;
 
 namespace HeThongDichVuSinhVien.Controllers
@@ -301,9 +302,13 @@ namespace HeThongDichVuSinhVien.Controllers
         public IActionResult ThemTaiKhoan(DangNhap taikhoan)
         {
 
-
+        
             if (ModelState.IsValid)
             {
+                taikhoan.TenDangNhap = taikhoan.TenDangNhap.Trim();
+                taikhoan.MatKhau = taikhoan.MatKhau.Trim();
+                taikhoan.MaNguoiDung = taikhoan.MaNguoiDung.Trim();
+                taikhoan.VaiTro = taikhoan.VaiTro.Trim();
                 _db.dangNhaps.Add(taikhoan);
                 _db.SaveChanges();
                 TempData["DeleteSuccess"] = "Thêm tài khoản thành công !";
@@ -312,6 +317,63 @@ namespace HeThongDichVuSinhVien.Controllers
             }
             return View();
         }
+
+        //Chinh sua tai khoan
+
+        public IActionResult ChinhSuaTaiKhoan(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            var taikhoan = _db.dangNhaps.FirstOrDefault(c => c.ID == id);
+            if (taikhoan == null)
+            {
+                return NotFound();
+            }
+
+            return View(taikhoan);
+        }
+        //POST
+        [HttpPost]
+        public IActionResult ChinhSuaTaiKhoan(DangNhap obj)
+        {
+
+            Console.WriteLine("id: " + obj.ID);
+
+            if (ModelState.IsValid)
+            {
+
+                // Tìm đối tượng cần cập nhật trong cơ sở dữ liệu
+                DangNhap taiKhoan = _db.dangNhaps.SingleOrDefault(nd => nd.ID == obj.ID); ;
+
+                if (taiKhoan == null)
+                {
+                    // Trả về NotFound nếu không tìm thấy đối tượng
+                    return NotFound();
+                }
+
+                // Cập nhật thông tin đối tượng
+                taiKhoan.TenDangNhap = obj.TenDangNhap.Trim();
+                taiKhoan.MatKhau = obj.MatKhau.Trim();
+                taiKhoan.VaiTro = obj.VaiTro.Trim();
+
+                // Lưu thay đổi vào cơ sở dữ liệu
+                _db.SaveChanges();
+
+                return RedirectToAction("QuanLyTaiKhoan");// Chuyển hướng đến trang Index hoặc trang khác
+
+
+            }
+            // Trả về View với model nếu ModelState không hợp lệ
+            return View(obj);
+         
+        }
+
+
+
+
+
         static string GenerateRandomString(string prefix, int length)
         {
             Random random = new Random();

@@ -59,7 +59,7 @@
                     <td>@item.LuotTruyCap</td>
                     <td>@item.TruyCapGanNhat</td>
                     <td class="actions">
-                        <a  class="edit"><i class="bi bi-pencil-fill"></i>  &nbsp Edit</a>
+                        <a asp-controller="CTSV" asp-action="ChinhSuaTaiKhoan" asp-route-id="@item.ID" class="edit"><i class="bi bi-pencil-fill"></i>  &nbsp Edit</a>
                         <a asp-controller="CTSV" asp-action="XoaTaiKhoan" asp-route-id="@item.ID" class="delete"> <i class="bi bi-trash3-fill"></i> &nbsp Delete</a>
                     </td>
                 </tr>

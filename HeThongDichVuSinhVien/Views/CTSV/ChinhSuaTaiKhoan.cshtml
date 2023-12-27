@@ -1,0 +1,89 @@
+﻿@model DangNhap
+@{
+    Layout = "~/Views/Shared/CTSV_Layout.cshtml";
+}
+
+<link rel="stylesheet" type="text/css" href="~/css/themtaikhoan.css">
+
+<div class='content'>
+    <div class="formbold-main-wrapper">
+
+        <div class="formbold-form-wrapper">
+
+            <form action="ChinhSuaTaiKhoan" method="post">
+                <div class="formbold-form-title">
+                    <div style="text-align: center;">
+                        <h2 class="">Chỉnh sửa tài khoản người dùng</h2>
+                    </div>
+                    <p>
+                        Mỗi người dùng chỉ có một tài khoản và phải thêm người dùng trước khi tạo tài khoản cho người đó.
+                    </p>
+                </div>
+             
+                    <input asp-for="ID"
+                           type="hidden"
+                           name="ID"
+                           id="ID"
+                           class="formbold-form-input"
+                           value="@Model.ID"
+                           required />
+                
+
+                <div class="formbold-mb-3">
+                    <label for="address2" class="formbold-form-label">
+                        Mã người dùng
+                    </label>
+                    <input asp-for="MaNguoiDung"
+                           type="MaNguoiDung"
+                           name="MaNguoiDung"
+                           id="MaNguoiDung"
+                           class="formbold-form-input readonly-input" readonly
+                          required />
+                        
+                </div>
+                <div class="formbold-mb-3">
+                    <label for="address2" class="formbold-form-label">
+                        Tên đăng nhập
+                    </label>
+                    <input asp-for="TenDangNhap"
+                           type="TenDangNhap"
+                           name="TenDangNhap"
+                           id="TenDangNhap"
+                           class="formbold-form-input" required />
+                </div>
+                <div class="formbold-mb-3">
+                    <label for="address2" class="formbold-form-label">
+                        Mật khẩu
+                    </label>
+                    <input asp-for="MatKhau" type="text"
+                           name="MatKhau"
+                           id="MatKhau"
+                           class="formbold-form-input" required />
+                </div>
+                <div class="formbold-mb-3">
+                    <label for="maNguoiDung" class="formbold-form-label">
+                        Mã Người Dùng
+                    </label>
+                    <select asp-for="VaiTro" name="VaiTro" id="VaiTro" class="formbold-form-input" required>
+
+                        <option value="SV">Sinh Viên</option>
+                        <option value="CTSV">Cộng tác sinh viên</option>
+                    </select>
+                </div>
+
+
+
+                <button class="formbold-btn">Cập nhật tài khoản</button>
+            </form>
+        </div>
+    </div>
+
+</div><!-- /.container -->
+<style>
+    .readonly-input {
+        background-color: #f2f2f2; /* Màu làm mờ */
+        opacity: 0.7; /* Độ mờ */
+        cursor: not-allowed; /* Đổi hình con trỏ khi di chuột vào */
+    }
+
+</style>
